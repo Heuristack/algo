@@ -1,7 +1,10 @@
 #include <unordered_set>
 #include <unordered_map>
+#include <set>
+#include <map>
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <functional>
 
@@ -67,6 +70,17 @@ struct Board : vector<vector<T>>
         }
     }
 
+    auto serialize() const -> unsigned long
+    {
+        stringstream s;
+        for (auto i = 0; i < m; i++) {
+        for (auto j = 0; j < n; j++) {
+            s << (*this)[i][j];
+        }
+        }
+        return stoul(s.str());
+    }
+
     int m = 0;
     int n = 0;
 
@@ -80,6 +94,11 @@ struct Board : vector<vector<T>>
         }
         return s;
     }
+
+    friend auto operator < (Board const & a, Board const & b) -> bool
+    {
+        return a.serialize() > b.serialize();
+    }
 };
 
 template<typename T = int>
@@ -87,13 +106,7 @@ struct BoardHash
 {
     auto operator () (Board<T> const & b) const -> size_t
     {
-        size_t v = 0;
-        for (auto const & r : b) {
-        for (auto const & e : r) {
-            v ^= hash<T>{}(e);
-        }
-        }
-        return v;
+        return hash<unsigned long>{}(b.serialize());
     }
 };
 
@@ -132,5 +145,19 @@ int main()
     assert(boards.find(puzzle) != boards.end());
     BoardHash<int> h;
     cout << h(puzzle) << endl;
+
+    Board<int> puzzle2({{4,5,6},{1,2,3},{7,8,0}});
+    cout << h(puzzle2) << endl;
+
+    cout << puzzle.serialize() << endl;
+    cout << puzzle2.serialize() << endl;
+
+    set<Board<int>> orderedboards;
+    orderedboards.insert(puzzle2);
+    orderedboards.insert(puzzle);
+    for (auto const & e : orderedboards) {
+        cout << e;
+    }
+
 }
 
