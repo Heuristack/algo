@@ -5,6 +5,7 @@
 using namespace std;
 
 namespace nonstd {
+
 template<typename I, typename F>
 auto partition(I b, I e, F p) -> I
 {
@@ -16,7 +17,8 @@ auto partition(I b, I e, F p) -> I
     }
     return n;
 }
-}
+
+} //::nonstd
 
 int main()
 {
@@ -24,4 +26,3 @@ int main()
     nonstd::partition(begin(v), end(v), [](auto const & e){ return e < 5; });
     for (auto const & e : v) { cout << e << endl; }
 }
-

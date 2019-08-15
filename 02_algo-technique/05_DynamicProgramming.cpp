@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <cassert>
 #include <limits>
+
 using namespace std;
 
 int dynamic_coin_changing(vector<int> coins, int a)
@@ -87,7 +88,6 @@ int main()
     string const X = "ABCBDAB";
     string const Y = "BDCABA";
     auto lcs = longest_common_subsequence(X,Y);
-    cout << "LongCommonSequence(" << quoted(X) << "," << quoted(Y) << ") = " << lcs << "(" << lcs.size() << ")" << endl;;
-
+    cout << "LongCommonSequence(" << quoted(X) << "," << quoted(Y) << ") = " << lcs << "(" << lcs.size() << ")" << endl;
 }
 

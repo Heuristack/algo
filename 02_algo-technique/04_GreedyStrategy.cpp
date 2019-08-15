@@ -1,6 +1,7 @@
 #include <iostream>
 #include <numeric>
 #include <vector>
+
 using namespace std;
 
 int greedy_coin_changing(vector<int> coins, int a)
@@ -12,8 +13,8 @@ int greedy_coin_changing(vector<int> coins, int a)
     }
 //  for (auto [c,n] : changes) { cout << c << ":" << n << endl; }
     return accumulate(begin(changes),end(changes),0,[](auto a, auto i){
-            auto [_,n] = i; return a + n;
-        });
+        auto [_,n] = i; return a + n;
+    });
 }
 
 int main()
