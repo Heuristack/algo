@@ -57,7 +57,7 @@ auto BellmanFord(Graph & g, Vertex s) -> vector<tuple<Vertex,Weight,vector<Verte
     return sssp;
 }
 
-#ifdef ENTRY
+#ifndef NENTRY
 int main()
 {
     auto const & example = CLRS3::Figure_24_2;

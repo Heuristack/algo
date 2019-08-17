@@ -1,3 +1,4 @@
+#define NENTRY
 #include "01_InsertionSort.cpp"
 #include "02_SelectionSort.cpp"
 #include "03_BubbleSort.cpp"

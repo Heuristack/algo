@@ -39,7 +39,7 @@ auto Kruskarl(Graph & g) -> pair<Weight,vector<Edge>>
     return {mw,st};
 }
 
-#ifdef ENTRY
+#ifndef NENTRY
 int main()
 {
     auto const & example = CLRS3::Figure_23_1;

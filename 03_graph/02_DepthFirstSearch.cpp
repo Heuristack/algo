@@ -37,7 +37,7 @@ auto DFS(Graph & g, Vertex u) -> void
     cout << ")";
 }
 
-#ifdef ENTRY
+#ifndef NENTRY
 int main()
 {
     auto const & E = TADM2::Figure_5_9;

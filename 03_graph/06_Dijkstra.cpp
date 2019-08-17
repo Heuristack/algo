@@ -116,7 +116,7 @@ void UniformCostSearch(Graph & g, Vertex s)
     }
 }
 
-#ifdef ENTRY
+#ifndef NENTRY
 int main()
 {
     auto const & example = CLRS3::Figure_24_2;

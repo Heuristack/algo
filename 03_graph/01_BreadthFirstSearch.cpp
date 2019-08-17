@@ -34,7 +34,7 @@ auto bfs(Graph & g, Vertex s) -> void
     }
 }
 
-#ifdef ENTRY
+#ifndef NENTRY
 int main()
 {
     auto const & E = TADM2::Figure_5_9;

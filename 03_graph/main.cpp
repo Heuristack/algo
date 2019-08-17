@@ -1,3 +1,4 @@
+#define NENTRY
 #include "GraphHelper.h"
 #include "03_Kruskal.cpp"
 #include "04_Prim.cpp"
