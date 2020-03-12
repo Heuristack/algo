@@ -3,42 +3,57 @@
 
 using namespace std;
 
-struct Master
+struct RecursionTree
 {
-    Master(unsigned breadth, unsigned depth): breadth(breadth), depth(depth) {}
+    RecursionTree(unsigned breadth_limit, unsigned depth_limit): breadth_limit(breadth_limit), depth_limit(depth_limit) {}
 
-    auto Explore(unsigned b = 0, unsigned d = 0) -> void
+    struct Node
     {
-        if (d != D(i,b,d)) {
-            Visit(i++,b,d);
-            for (auto b = 0; b != B(i,b,d); b++) {
-                Explore(b,d+1);
+        unsigned sequence_num;
+        unsigned branch_num;
+        unsigned path_len;
+
+        Node(unsigned s, unsigned b, unsigned d) : sequence_num(s), branch_num(b), path_len(d) {}
+    };
+
+    auto Explore() -> void
+    {
+        Node node (node_sequence_num++,0,0);
+        Explore(node);
+    }
+
+    auto Explore(Node node) -> void
+    {
+        if (node.path_len != DepthLimit((node))) {
+            Visit(node);
+            for (auto branch_num = 0; branch_num != BreadthLimit(node); branch_num++) {
+                Explore(Node(node_sequence_num++,branch_num,node.path_len+1));
             }
         }
     }
 
-    auto Visit(unsigned i, unsigned b, unsigned d) -> void
+    auto Visit(Node const & n) -> void
     {
-        cout << "(" << d << "," << b << "): " << setw(2) << setfill('0') << i << endl;
+        cout << "(" << n.path_len << "," << n.branch_num << "): " << setw(2) << setfill('0') << n.sequence_num << endl;
     }
 
-    auto B(unsigned i, unsigned b, unsigned d) -> unsigned const
+    auto BreadthLimit(Node const & n) -> unsigned const
     {
-        return breadth;
+        return breadth_limit;
     }
 
-    auto D(unsigned i, unsigned b, unsigned d) -> unsigned const
+    auto DepthLimit(Node const & n) -> unsigned const
     {
-        return depth;
+        return depth_limit;
     }
 
-    unsigned breadth;
-    unsigned depth;
-    unsigned i = 0;
+    unsigned node_sequence_num = 0;
+    unsigned breadth_limit;
+    unsigned depth_limit;
 };
 
 int main()
 {
-    Master(2,4).Explore();
+    RecursionTree(2,4).Explore();
 }
 
