@@ -8,12 +8,12 @@ struct Execution
     Execution(unsigned int N): number(N) {}
 
     virtual unsigned int Factorial(unsigned int) = 0;
-    virtual unsigned int Fabonacci(unsigned int) = 0;
+    virtual unsigned int Fibonacci(unsigned int) = 0;
 
     void Run()
     {
         cout << "Factorial(" << number << ") = " << Factorial(number) << "\n";
-        cout << "Fabonacci(" << number << ") = " << Fabonacci(number) << "\n";
+        cout << "Fibonacci(" << number << ") = " << Fibonacci(number) << "\n";
     }
 
     unsigned int number = 0;
@@ -32,9 +32,10 @@ struct Iteration : Execution
         return F;
     }
 
-    auto Fabonacci(unsigned int N) -> unsigned int override
+    auto Fibonacci(unsigned int N) -> unsigned int override
     {
-        auto D = 0, E = 1, F = 0;
+        auto D = 0, E = 1;
+        auto F = N;
         for (auto I = 2; I <= N; I++) {
             F = E + D; D = E; E = F;
         }
@@ -52,17 +53,17 @@ struct Recursion : Execution
         else return Factorial(N - 1) * N;
     }
 
-    auto Fabonacci(unsigned int N) -> unsigned int override
+    auto Fibonacci(unsigned int N) -> unsigned int override
     {
         if (N <= 1) return N;
-        else return Fabonacci(N - 2) + Fabonacci(N - 1);
+        else return Fibonacci(N - 2) + Fibonacci(N - 1);
     }
 
 };
 
 int main()
 {
-    Recursion(10).Run();
-    Iteration(10).Run();
+    Recursion(5).Run();
+    Iteration(5).Run();
 }
 

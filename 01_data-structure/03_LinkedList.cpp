@@ -5,7 +5,7 @@ using namespace std;
 
 template <typename T> struct ListNode
 {
-    enum class TraverseOrder {PRE, POS};
+    enum class TraverseOrder {B,A};
     T data;
     shared_ptr<ListNode<T>> next;
 };
@@ -15,9 +15,9 @@ void linked_list_traverse_recursive(List list, typename ListNode<Key>::TraverseO
 {
     if (list == nullptr) return;
 
-    if (order == ListNode<Key>::TraverseOrder::PRE) cout << list->data << " ";
+    if (order == ListNode<Key>::TraverseOrder::B) cout << list->data << " ";
     linked_list_traverse_recursive(list->next, order);
-    if (order == ListNode<Key>::TraverseOrder::POS) cout << list->data << " ";
+    if (order == ListNode<Key>::TraverseOrder::A) cout << list->data << " ";
 }
 
 template <typename Key = int, typename List = shared_ptr<ListNode<Key>>>
@@ -74,25 +74,12 @@ int main()
     cout << linked_list_search_iterative(L, 3) << endl;
     cout << L->next->next << endl;
 
-    cout << "PRE: ";
-    linked_list_traverse_recursive(L, LNI::TraverseOrder::PRE);
-    cout << endl;
+    cout << "B: "; linked_list_traverse_recursive(L, LNI::TraverseOrder::B); cout << endl;
+    cout << "A: "; linked_list_traverse_recursive(L, LNI::TraverseOrder::A); cout << endl;
+    cout << "I: "; linked_list_traverse_iterative(L); cout << endl;
 
-    cout << "POS: ";
-    linked_list_traverse_recursive(L, LNI::TraverseOrder::POS);
-    cout << endl;
-
-    cout << "FOR: ";
-    linked_list_traverse_iterative(L);
-    cout << endl;
-
-    int i = 3;
-    auto NL = linked_list_remove_recursive(L, i);
-    cout << "RM" << i << ": ";
-    linked_list_traverse_iterative(NL);
-    cout << endl;
-    cout << "RM" << i << ": ";
-    linked_list_traverse_iterative(L);
-    cout << endl;
+    auto N = linked_list_remove_recursive(L, 3);
+    cout << "R: "; linked_list_traverse_iterative(N); cout << endl;
+    cout << "R: "; linked_list_traverse_iterative(L); cout << endl;
 }
 

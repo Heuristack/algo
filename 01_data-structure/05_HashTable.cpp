@@ -120,10 +120,9 @@ int main()
     assert(s.find(T{"Bye","Beijing"}) != s.end());
 
     Board<int> board;
-    cout << board.m << board.n << endl;
-    cout << board.size();
-    for (auto row : board) cout << row.size();
-    cout << endl;
+    cout << board.m << "x" << board.n << endl;
+    cout << board.size() << endl;
+    for (auto row : board) cout << row.size(); cout << endl;
     cout << board;
 
     Board<int> board_3x2(3,2);
@@ -139,9 +138,7 @@ int main()
 
     unordered_set<Board<int>,BoardHash<int>> boards;
     boards.insert(puzzle);
-    for (auto const & e : boards) {
-        cout << e;
-    }
+    for (auto const & e : boards) cout << e;
     assert(boards.find(puzzle) != boards.end());
     BoardHash<int> h;
     cout << h(puzzle) << endl;
@@ -155,9 +152,6 @@ int main()
     set<Board<int>> orderedboards;
     orderedboards.insert(puzzle2);
     orderedboards.insert(puzzle);
-    for (auto const & e : orderedboards) {
-        cout << e;
-    }
-
+    for (auto const & e : orderedboards) cout << e;
 }
 

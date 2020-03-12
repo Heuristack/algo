@@ -6,7 +6,7 @@ using namespace std;
 template <typename T = int>
 struct BinaryTreeNode
 {
-    enum class TraverseOrder { PR = -1, IN = 0, PO = 1 };
+    enum class TraverseOrder { B = -1, I = 0, A = 1 };
     T data;
     unique_ptr<BinaryTreeNode<T>> ltree, rtree;
 };
@@ -15,12 +15,13 @@ template <typename T = int>
 void binary_tree_traverse(unique_ptr<BinaryTreeNode<T>> const & tree, typename BinaryTreeNode<T>::TraverseOrder order = BinaryTreeNode<T>::TraverseOrder::PR)
 {
     if (tree == nullptr) return;
+
     cout << "(";
-    if (order == BinaryTreeNode<T>::TraverseOrder::PR) cout << tree->data;
+    if (order == BinaryTreeNode<T>::TraverseOrder::B) cout << tree->data;
     binary_tree_traverse(tree->ltree, order);
-    if (order == BinaryTreeNode<T>::TraverseOrder::IN) cout << tree->data;
+    if (order == BinaryTreeNode<T>::TraverseOrder::I) cout << tree->data;
     binary_tree_traverse(tree->rtree, order);
-    if (order == BinaryTreeNode<T>::TraverseOrder::PO) cout << tree->data;
+    if (order == BinaryTreeNode<T>::TraverseOrder::A) cout << tree->data;
     cout << ")";
 }
 
@@ -81,14 +82,8 @@ int main()
     });
 
     auto const & tree = EoPI_Figure_6_1_C;
-    cout << "PRE: ";
-    binary_tree_traverse(tree, BTC::TraverseOrder::PR);
-    cout << endl;
-    cout << " IN: ";
-    binary_tree_traverse(tree, BTC::TraverseOrder::IN);
-    cout << endl;
-    cout << "POS: ";
-    binary_tree_traverse(tree, BTC::TraverseOrder::PO);
-    cout << endl;
+    cout << "B: "; binary_tree_traverse(tree, BTC::TraverseOrder::B); cout << endl;
+    cout << "I: "; binary_tree_traverse(tree, BTC::TraverseOrder::I); cout << endl;
+    cout << "A: "; binary_tree_traverse(tree, BTC::TraverseOrder::A); cout << endl;
 }
 

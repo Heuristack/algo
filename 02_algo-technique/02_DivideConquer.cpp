@@ -5,14 +5,13 @@ using namespace std;
 
 struct Master
 {
-    Master(unsigned breadth, unsigned depth): BN(breadth), DN(depth)
-    {}
+    Master(unsigned breadth, unsigned depth): breadth(breadth), depth(depth) {}
 
     auto Explore(unsigned b = 0, unsigned d = 0) -> void
     {
-        if (d != D(ID,b,d)) {
-            Visit(ID++,b,d);
-            for (auto b = 0; b != B(ID,b,d); b++) {
+        if (d != D(i,b,d)) {
+            Visit(i++,b,d);
+            for (auto b = 0; b != B(i,b,d); b++) {
                 Explore(b,d+1);
             }
         }
@@ -25,17 +24,17 @@ struct Master
 
     auto B(unsigned i, unsigned b, unsigned d) -> unsigned const
     {
-        return BN;
+        return breadth;
     }
 
     auto D(unsigned i, unsigned b, unsigned d) -> unsigned const
     {
-        return DN;
+        return depth;
     }
 
-    unsigned ID = 0;
-    unsigned BN = 0;
-    unsigned DN = 0;
+    unsigned breadth;
+    unsigned depth;
+    unsigned i = 0;
 };
 
 int main()
