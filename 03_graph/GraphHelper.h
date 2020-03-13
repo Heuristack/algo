@@ -24,11 +24,24 @@ using Edge = BasicEdge<Vertex, Weight>;
 template<typename E> using Set = set<E>;
 template<typename K, typename V> using Map = map<K,V>;
 
-template <bool NodeWeighted = false, bool Directed = true, bool EdgeWeighted = true>
-struct VariantGraph : BasicGraph<Node,Edge,Set,Map>
+template <int> struct NodeWeight: true_type {};
+template <int> struct EdgeWeight: true_type {};
+template <int> struct EdgeDirect: true_type {};
+
+template <> struct NodeWeight<0>: false_type {};
+template <> struct EdgeWeight<0>: false_type {};
+template <> struct EdgeDirect<0>: false_type {};
+
+template <typename EdgeDirectType = EdgeDirect<0>, typename NodeWeightType = NodeWeight<0>, typename EdgeWeightType = EdgeWeight<0>>
+struct GraphCreator
 {
-    // TODO: How to generalize the following variants!
+    using GraphType = BasicGraph<Node,Edge,Set,Map>;
+
+    GraphType make_graph();
 };
+
+// TODO : these look odd and ugly, change this to better one
+
 struct UndirectedUnweightedGraph : BasicGraph<Vertex,Vertex,Set,Map> {};
 struct DirectedUnweightedGraph : BasicGraph<Vertex,Vertex,Set,Map> {};
 struct UndirectedWeightedGraph : BasicGraph<Vertex,Edge,Set,Map> {};

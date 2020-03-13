@@ -33,7 +33,8 @@ Let **`G = (V,E)`** be an **undirected graph**, the following statements are equ
 
 Data Structures
 ===============
-Proper graph modeling (graph data structure) is the key to making efficient use of graph algorithms, take the adjacency list for example, each item could be a **vertex** or an **edge** totegher with some auxiliary information like **weight**, **direction**, **out-edges**, **in-edges**, etc.
+Proper graph modeling (graph data structure) is the key to making efficient use of graph algorithms, take the adjacency list for example, 
+each item could be a **vertex** or an **edge** totegher with some auxiliary information like **weight**, **direction**, **out-edges**, **in-edges**, etc.
 
 **Graph Representations:**
 **`adjacency_matrix` `adjacency_list` `edge_list`**
@@ -47,8 +48,9 @@ Algorithms
 **`BDKPBD`**
 
 ### Search: `BFS` `DFS`
-**The essence of searching**
-is to **follow up one option now and put the others aside for later** in an **open list** representing the searching **frontier**. However, to avoid algorithms **forget their history** which are doomed to repeat it, visited ones are kept in a **closed list** representing the **explored set** which also differentiates **graph search** from **tree search**.
+**The essence of searching** is to **follow up one option now and put the others aside for later** in an **open list** representing the searching **frontier**. 
+However, to avoid algorithms **forget their history** which are doomed to repeat it, visited ones are kept in a **closed list** representing the **explored set** 
+which also differentiates **graph search** from **tree search**.
 
 **Frontier Data Structures:**
 **`stack` `queue` `priority_queue`**
