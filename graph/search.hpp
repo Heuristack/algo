@@ -48,7 +48,7 @@ namespace strategies
     template <typename strategy>
     struct container
     {
-        template <typename node> using type = adapter<typename conditional<is_same<strategy,strategies::DFS>::value,stack<node>,queue<node>>::type>;
+        template <typename node> using type = sequential<typename conditional<is_same<strategy,strategies::DFS>::value,stack<node>,queue<node>>::type>;
     };
 }
 
