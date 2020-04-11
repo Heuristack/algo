@@ -1,7 +1,7 @@
 template <typename graph, typename visitor>
 auto dfs(graph const & g, typename graph::node_type const & u, visitor const & c) -> void
 {
-    static searchable<set<mixin<typename graph::node_type,properties::parent<typename graph::node_type>>>> close;
+    static searchable<set<mixin<typename graph::node_type,parent<typename graph::node_type>>>> close;
     if (!g.contains(u)) return;
     close.insert(u);
     invoke(c,u);

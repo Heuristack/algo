@@ -9,7 +9,7 @@ struct graph : searchable<map<node,set<edge>>>
     using edge_type = edge;
 
     template <typename direction>
-    static auto make_graph(initializer_list<edge_type> edges) -> this_type // note : how to provide argument to templated constructor!
+    static auto make_graph(initializer_list<edge_type> edges) -> this_type
     {
         return graph(edges,direction());
     }
@@ -27,7 +27,10 @@ struct graph : searchable<map<node,set<edge>>>
     template <typename direction>
     graph(initializer_list<variant<node_type,edge_type>> varis, direction d)
     {
-        for (auto const & v : varis) { if (holds_alternative<node_type>(v)) insert_node(get<node_type>(v)); if (holds_alternative<edge_type>(v)) insert_edge(get<edge_type>(v),d); }
+        for (auto const & v : varis) {
+            if (holds_alternative<edge_type>(v)) insert_edge(get<edge_type>(v),d);
+            if (holds_alternative<node_type>(v)) insert_node(get<node_type>(v));
+        }
     }
 
     auto insert_node(vertex_type const & v) -> set<edge_type> & { return base_type::operator[](node_type(v)); }

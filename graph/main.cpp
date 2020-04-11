@@ -13,17 +13,13 @@ using namespace std;
 
 #include "node.hpp"
 #include "edge.hpp"
-#include "traits.hpp"
-#include "decorators.hpp"
 #include "containers.hpp"
-#include "adapters.hpp"
 #include "graph.hpp"
 #include "algorithms.hpp"
-#include "streams.hpp"
-#include "properties.hpp"
 #include "search.hpp"
 #include "recursion.hpp"
 #include "initializers.hpp"
+#include "streams.hpp"
 
 int main()
 {

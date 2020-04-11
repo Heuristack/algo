@@ -14,9 +14,9 @@ template <typename strategy, typename graph, typename visitor>
 auto search(graph const & g, typename graph::node_type const & n, visitor const & c) -> void
 {
     using base = typename graph::node_type;
-    using node = mixin<base, properties::parent<base>, properties::length<int>, properties::status, properties::access<>>;
+    using node = mixin<base, parent<base>, length<int>, status, access<>>;
 
-    typename properties::access<>::time_type time = 0;
+    typename access<>::time_type time = 0;
     searchable<map<base,node>> close;
     close[n] = node(n);
 
@@ -24,7 +24,7 @@ auto search(graph const & g, typename graph::node_type const & n, visitor const 
     open.put(n);
     while (!open.empty()) {
         auto & u = close[open.get()];
-        u.s = properties::status::expanding;
+        u.s = status::expanding;
         u.enter = time++;
         for (auto const & e : const_cast<graph&>(g)[u]) {
             if (auto v = base(e.t); !close.contains(v)) {
@@ -34,7 +34,7 @@ auto search(graph const & g, typename graph::node_type const & n, visitor const 
         }
         invoke(c,u);
         u.leave = time++;
-        u.s = properties::status::processed;
+        u.s = status::processed;
     }
 }
 
