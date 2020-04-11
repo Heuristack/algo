@@ -1,3 +1,5 @@
+#include "graph.h"
+
 static initializer_list<edge<string,int>> clrs2301 = {
     {"A","B", 4}, {"A","H", 8},
     {"B","H",11}, {"B","C", 8},

@@ -1,23 +1,5 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <list>
-#include <set>
-#include <map>
-#include <stack>
-#include <queue>
-#include <initializer_list>
-#include <variant>
-
-using namespace std;
-
-#include "node.hpp"
-#include "edge.hpp"
-#include "containers.hpp"
-#include "graph.hpp"
-#include "streams.hpp"
-#include "search.hpp"
-#include "initializers.hpp"
+#include "initializers.h"
+#include "graph.h"
 
 int main()
 {
