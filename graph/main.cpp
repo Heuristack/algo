@@ -3,8 +3,8 @@
 
 int main()
 {
-    auto g = graph<node<string>,edge<string,int>>::make_graph<undirected>(clrs2301);
-    auto n = node<string>("A");
+    auto g = graph<node<string>,edge<string,double>>::make_graph<undirected>(cin);
+    auto n = node<string>("200");
     auto v = [](auto const & n){ cout << n; };
     DFS(g,n,v); cout << endl;
     search<strategies::container<strategies::DFS>::type>(g,n,v); cout << endl;

@@ -33,6 +33,19 @@ struct graph : searchable<map<node,set<edge>>>
         }
     }
 
+    template <typename direction>
+    static auto make_graph(istream & s) -> this_type
+    {
+        return graph(s,direction());
+    }
+    template <typename direction>
+    graph(istream & s, direction d)
+    {
+        for (edge_type e; s >> e;) {
+            insert_edge(e,d);
+        }
+    }
+
     auto insert_node(vertex_type const & v) -> set<edge_type> & { return base_type::operator[](node_type(v)); }
     auto insert_node(node_type const & n) { insert_node(n.v); }
     auto insert_edge(vertex_type const & v, edge_type const & e) { insert_node(v).insert(e); }

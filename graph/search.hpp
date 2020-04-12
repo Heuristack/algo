@@ -4,6 +4,8 @@ auto search(graph const & g, typename graph::node_type const & n, visitor const 
     using base = typename graph::node_type;
     using node = mixin<base, parent<base>, length<int>, status, access<>>;
 
+    if (!g.contains(n)) return;
+
     typename access<>::time_type time = 0;
     searchable<map<base,node>> close;
     close[n] = node(n);
