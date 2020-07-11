@@ -10,6 +10,7 @@
 #include <queue>
 #include <initializer_list>
 #include <variant>
+#include <functional>
 
 using namespace std;
 
