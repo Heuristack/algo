@@ -26,7 +26,8 @@ project(algo)
 #
 # 03 Graph - BDKPBD
 #
-add_executable(graph_main graph/main.cpp)
+add_executable(graph_algo graph/main.cpp)
+target_link_libraries(graph_algo boost_program_options)
 
 #
 # 04 Searching - BT
