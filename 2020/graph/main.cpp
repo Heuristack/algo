@@ -1,5 +1,4 @@
 #include "graph.h"
-#include <fstream>
 
 using namespace std;
 
@@ -15,8 +14,5 @@ int main(int argc, char const ** argv)
     auto g = graph<node<string>,edge<string,double>>::make_graph<undirected>(cin);
     auto n = node<string>(source_node);
     auto v = [](auto const & n){ cout << n; };
-
-    cout << "DFS(recursive) path: "; DFS(g,n,v); cout << endl;
-    cout << "DFS path: "; search<strategies::container<strategies::DFS>::type>(g,n,v); cout << endl;
-    cout << "BFS path: "; search<strategies::container<strategies::BFS>::type>(g,n,v); cout << endl;
+    search<strategies::container<strategies::DFS>::type>(g,n,v); cout << endl;
 }
