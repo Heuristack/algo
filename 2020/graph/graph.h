@@ -12,13 +12,17 @@
 #include <variant>
 #include <functional>
 
-namespace { using namespace std;
-#include "internal/node.hpp"
-#include "internal/edge.hpp"
-#include "internal/containers.hpp"
-#include "internal/graph.hpp"
-#include "internal/streams.hpp"
-#include "internal/search.hpp"
-#include "data/initializers.hpp"
+namespace {
+
+using namespace std;
+
+#include "structure/node.hpp"
+#include "structure/edge.hpp"
+#include "structure/container.hpp"
+#include "structure/graph.hpp"
+#include "stream/stream.hpp"
+#include "algorithm/search.hpp"
+#include "data_set/initializers.hpp"
+
 }
 

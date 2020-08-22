@@ -5,7 +5,7 @@ using namespace std;
 int main(int argc, char const ** argv)
 {
     string source_node = "200";
-    cout << "usage: graph_search soude-node(default=200) < data-file" << endl;
+    cerr << "usage: graph_traverse soude-node(default=200) < data-file" << endl;
 
     if (argc > 1) {
         source_node.assign(argv[1]);

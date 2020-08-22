@@ -1,5 +1,5 @@
-template <typename State, typename Operator, template<typename>typename Set>
-struct ProblemSpace
+template <typename State, typename Operator, template<typename> typename Set>
+struct StateSpace
 {
     void dfs(State v)
     {

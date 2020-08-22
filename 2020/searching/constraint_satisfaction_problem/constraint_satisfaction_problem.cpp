@@ -1,4 +1,4 @@
-template<typename T, template<typename>typename Container>
+template<typename T, template<typename> typename Container>
 struct ConstraintSatisfactionProblem
 {
     Container<T> variables;
